@@ -1,26 +1,90 @@
 @import "tailwindcss";
+@import "@heroui/styles"; 
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-fredoka: "Fredoka", sans-serif;
+  --font-nabla: "Nabla", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+:root,
+.light,
+.default,
+[data-theme="light"],
+[data-theme="default"] {
+  /* Theme Colors (Light Mode) */
+  --accent: oklch(54.00% 0.2200 306.98);
+  --accent-foreground: oklch(99.11% 0 0);
+  --background: oklch(97.02% 0.0200 306.98);
+  --border: oklch(90.00% 0.0200 306.98);
+  --danger: oklch(65.32% 0.2421 32.12);
+  --danger-foreground: oklch(99.11% 0 0);
+  --default: oklch(94.00% 0.0200 306.98);
+  --default-foreground: oklch(21.03% 0.0059 306.98);
+  --field-background: oklch(100.00% 0.0100 306.98);
+  --field-foreground: oklch(21.03% 0.0200 306.98);
+  --field-placeholder: oklch(55.17% 0.0400 306.98);
+  --focus: oklch(54.00% 0.2200 306.98);
+  --foreground: oklch(21.03% 0.0200 306.98);
+  --muted: oklch(55.17% 0.0400 306.98);
+  --overlay: oklch(100.00% 0.0060 306.98);
+  --overlay-foreground: oklch(21.03% 0.0200 306.98);
+  --scrollbar: oklch(87.10% 0.0200 306.98);
+  --segment: oklch(100.00% 0.0200 306.98);
+  --segment-foreground: oklch(21.03% 0.0200 306.98);
+  --separator: oklch(92.00% 0.0200 306.98);
+  --success: oklch(73.29% 0.2012 157.19);
+  --success-foreground: oklch(21.03% 0.0059 157.19);
+  --surface: oklch(100.00% 0.0100 306.98);
+  --surface-foreground: oklch(21.03% 0.0200 306.98);
+  --surface-secondary: oklch(95.24% 0.0160 306.98);
+  --surface-secondary-foreground: oklch(21.03% 0.0200 306.98);
+  --surface-tertiary: oklch(93.73% 0.0160 306.98);
+  --surface-tertiary-foreground: oklch(21.03% 0.0200 306.98);
+  --warning: oklch(78.19% 0.1648 78.71);
+  --warning-foreground: oklch(21.03% 0.0059 78.71);
+
+  /* Border Radius */
+  --radius: 0.5rem;
+  --field-radius: 0.5rem;
+
+  /* Font Family */
+  /* Make sure to load Fredoka font in your app */
+  --font-sans: var(--font-fredoka);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  /* Theme Colors (Dark Mode) */
+  --accent: oklch(54.00% 0.2200 306.98);
+  --accent-foreground: oklch(99.11% 0 0);
+  --background: oklch(12.00% 0.0200 306.98);
+  --border: oklch(28.00% 0.0200 306.98);
+  --danger: oklch(59.40% 0.2046 31.01);
+  --danger-foreground: oklch(99.11% 0 0);
+  --default: oklch(27.40% 0.0200 306.98);
+  --default-foreground: oklch(99.11% 0 0);
+  --field-background: oklch(21.03% 0.0400 306.98);
+  --field-foreground: oklch(99.11% 0.0200 306.98);
+  --field-placeholder: oklch(70.50% 0.0400 306.98);
+  --focus: oklch(54.00% 0.2200 306.98);
+  --foreground: oklch(99.11% 0.0200 306.98);
+  --muted: oklch(70.50% 0.0400 306.98);
+  --overlay: oklch(21.03% 0.0400 306.98);
+  --overlay-foreground: oklch(99.11% 0.0200 306.98);
+  --scrollbar: oklch(70.50% 0.0200 306.98);
+  --segment: oklch(39.64% 0.0200 306.98);
+  --segment-foreground: oklch(99.11% 0.0200 306.98);
+  --separator: oklch(25.00% 0.0200 306.98);
+  --success: oklch(73.29% 0.2012 157.19);
+  --success-foreground: oklch(21.03% 0.0059 157.19);
+  --surface: oklch(21.03% 0.0400 306.98);
+  --surface-foreground: oklch(99.11% 0.0200 306.98);
+  --surface-secondary: oklch(25.70% 0.0300 306.98);
+  --surface-secondary-foreground: oklch(99.11% 0.0200 306.98);
+  --surface-tertiary: oklch(27.21% 0.0300 306.98);
+  --surface-tertiary-foreground: oklch(99.11% 0.0200 306.98);
+  --warning: oklch(82.03% 0.1444 82.72);
+  --warning-foreground: oklch(21.03% 0.0059 82.72);
 }
