@@ -12,6 +12,7 @@ const nabla = Nabla({
 });
 
 import "./globals.css";
+import MeuHeader from "./components/MeuHeader";
 
 export const metadata: Metadata = {
   title: "Home Chat - O lar da conversa",
@@ -24,11 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className="dark">
+    <html lang="pt-br" className="dark" suppressHydrationWarning>
       <body
-        className={`${fredoka.variable} ${nabla.variable} antialiased bg-background`}
+        className={`${fredoka.variable} ${nabla.variable} antialiased bg-background min-h-screen flex flex-col`}
       >
-        {children}
+        <MeuHeader />
+        <main className="flex-1 flex flex-col">
+          {children}
+        </main>
       </body>
     </html>
   );
