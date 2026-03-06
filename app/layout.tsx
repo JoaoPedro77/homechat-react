@@ -27,10 +27,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br" className="dark" suppressHydrationWarning>
       <body
-        className={`${fredoka.variable} ${nabla.variable} antialiased bg-background min-h-screen flex flex-col`}
+        className={`${fredoka.variable} ${nabla.variable} antialiased bg-background h-dvh flex flex-col overflow-hidden`}
       >
         <MeuHeader />
-        <main className="flex-1 flex flex-col">
+        <main className="flex flex-col flex-1 min-h-0">
           {children}
         </main>
       </body>

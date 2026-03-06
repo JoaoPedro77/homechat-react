@@ -2,11 +2,36 @@
 import Image from "next/image";
 import { Button, Card, CardFooter, Form, Label, TextField, Input, FieldError } from '@heroui/react';
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { supabase } from "../../lib/supabase";
+
 export default function Login() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+
+    // Login Anônimo no Supabase guardando o Nome desejado no perfil
+    const { error } = await supabase.auth.signInAnonymously({
+      options: {
+        data: {
+          display_name: name
+        }
+      }
+    });
+
+    if (error) {
+      console.error("Erro no Login Anônimo:", error);
+      alert("Falha ao entrar no chat. Verifique se ativou o Login Anônimo no Supabase.");
+      setLoading(false);
+      return;
+    }
+
     router.push("/chat");
   };
 
@@ -34,21 +59,10 @@ export default function Login() {
               <Input placeholder="Insira seu nome" className='bg-accent/5 shadow-sm' />
               <FieldError />
             </TextField>
-            <TextField isRequired fullWidth name="senha" validate={(value) => {
-              if (value.length < 6) {
-                return "Senha deve ter pelo menos 6 caracteres";
-              }
-
-              return null;
-            }}>
-              <Label>Senha</Label>
-              <Input type="password" placeholder="Insira sua senha" className='bg-accent/5 shadow-sm' />
-              <FieldError />
-            </TextField>
           </Card.Content>
           <CardFooter>
-            <Button type="submit" className="w-full shadow-sm">
-              Login
+            <Button type="submit" isDisabled={loading} className="w-full shadow-sm">
+              {loading ? "Entrando..." : "Login"}
               <Image src="/magago.png" alt="Magago" width={40} height={40} />
             </Button>
           </CardFooter>
